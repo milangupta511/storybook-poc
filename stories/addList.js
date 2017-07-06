@@ -7,11 +7,11 @@ import { specs, describe, it } from 'storybook-addon-specifications'
 import expect from 'expect';
 import { mount, shallow } from 'enzyme'
 
-storiesOf('Add new todos',module)
+storiesOf('Add List',module)
     .add('Add todos', ()=> <AddList addToDo={action('addToDo')}/> )
 
-
-// storiesOf('Add new todos', module)
+    
+// storiesOf('Add List', module)
 //     .add('Add todos', ()=>{ 
 //         const story = <AddList addToDo={action('addToDo')}/>
 //          specs(() => describe('default view', () => {
