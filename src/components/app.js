@@ -12,28 +12,22 @@ export default class App extends Component {
     	<div className="demo-card-wide mdl-card mdl-shadow--2dp">
 			<ConnectedAddList />
 			<ConnectedFilterList />
-      <ConnectedViewList />
+            <ConnectedViewList />
 		</div>
     );
   }
 }
+const mapStateToProps = ({toDoList, visibilityFilter}) => {
+    let filterToId = {
+        SHOW_ALL:0,
+        SHOW_PENDING:1,
+        SHOW_COMPLETED:2
+    } 
+	return {toDoList, visibilityFilter:filterToId[visibilityFilter] }
+}
 const ConnectedAddList = connect(null, {addToDo})(AddList)
 
-const ConnectedFilterList = connect(({toDoList, visibilityFilter}) => {
-    let filterToId = {
-        SHOW_ALL:0,
-        SHOW_PENDING:1,
-        SHOW_COMPLETED:2
-    } 
-	return {toDoList, visibilityFilter:filterToId[visibilityFilter] }
-}, {visibilityToDoFilter})(FilterList)
+const ConnectedFilterList = connect(mapStateToProps, {visibilityToDoFilter})(FilterList)
 
-const ConnectedViewList = connect(({toDoList, visibilityFilter}) => {
-    let filterToId = {
-        SHOW_ALL:0,
-        SHOW_PENDING:1,
-        SHOW_COMPLETED:2
-    } 
-	return {toDoList, visibilityFilter:filterToId[visibilityFilter] }
-}, {toggleCompleteToDo ,editToDo,editItemMode, deleteToDo})(ViewList);
+const ConnectedViewList = connect(mapStateToProps, {toggleCompleteToDo ,editToDo,editItemMode, deleteToDo})(ViewList);
 

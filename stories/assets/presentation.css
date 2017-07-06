@@ -1,0 +1,9 @@
+
+ .about-storybook li, .addons li{
+        font-size:18px;
+        padding:10px;
+    }
+.about-storybook h1, .addons h1{
+    margin-left:20px;
+    color:lightseagreen
+}
